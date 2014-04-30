@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Turistik Connect</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+<body>
+	
+	<section class="chat">
+		<div class="limite">
+			<div class="setup"></div>
+		</div>
+	</section>
+
+
+	<section class="chat_ventana">
+		<div class="titulo">
+			<div class="nombre">Alejandro Rodriguez</div>
+		</div>
+
+		<div class="info">
+			<div class="paso"></div>
+		</div>
+		<div class="control">
+			<input id="xEnviar" type="text">
+		</div>
+	</section>
+	<footer>
+
+	</footer>
+
+	<button onclick="ActivarPermiso();">Activar</button>
+	<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="/js/vendor/jquery-1.9.1.min.js"></script>
+	<script src="/js/vendor/underscore.js"></script>
+	<script src="/js/vendor/backbone.js"></script>
+	<script src="/js/vendor/swig.js"></script>
+	<script src="/js/vendor/scroll.js"></script>
+	<script src="/js/vendor/notificaciones.js"></script>
+
+	<script src="/js/vendor/socket.io.js"></script>
+	<script src="/js/vendor/neon.js"></script>
+	<script src="/js/vendor/CustomEvent.js"></script>
+	<script src="/js/vendor/CustomEventSupport.js"></script>
+	<script src="/js/vendor/PonyExpress.js"></script>
+
+	<script src="/js/init.js"></script>
+	<script src="/js/main.js"></script>
+
+	<script src="/js/backbone/models/departamento.js"></script>
+	<script src="/js/backbone/collections/departamentos.js"></script>
+	<script src="/js/backbone/views/departamento.js"></script>
+	<script src="/js/backbone/models/usuario.js"></script>
+	<script src="/js/backbone/collections/usuarios.js"></script>
+	<script src="/js/backbone/views/usuario.js"></script>
+
+	<script src="/js/backbone/models/mensaje.js"></script>
+	<script src="/js/backbone/collections/mensajes.js"></script>
+	<script src="/js/backbone/views/mensaje.js"></script>
+
+	{% raw %}
+	<script id="departamento_tpl" type="text/template">
+	<div class="departamento">
+	<div class="titulo">{{ post.name }}</div>
+	</div>
+
+	</script>	
+
+	<script id="msn_tpl" type="text/template">
+		<div class="mensaje_{{ datos.tipo}}">
+			<img src="./img/{{ datos.avatar }}">
+			<div class="mensaje">{{ datos.mensaje }}</div>
+			<div class="fecha">{{ datos.fecha }}</div>
+		<div style="clear:both;"></div>
+	</div>
+	</script>
+
+	<script id="usuario_tpl" type="text/template">
+	 <div class="personas">
+			 	<img src="/img/{{ post.avatar }}">
+			 	<div class="nombre">{{ post.name }}</div>
+			 	<div class="ultimoMensaje">
+			 		{% if post.online %}
+			 			<div class="green">Online</div>
+					{% else %}
+			 				Offline
+					{% endif %}
+			
+			 	</div>
+			 	<div class="fecha">12:35</div>
+			 </div>
+
+	</script>	
+	<script id="usuarioN_tpl" type="text/template">
+
+	 <div class="personas">
+	 			<div class="nuevo">{{ post.num }}</div>
+			 	<img src="/img/{{ post.avatar }}">
+			 	<div class="nombre">
+			 	{{ post.name }}</div>
+			 	<div class="ultimoMensaje">
+					{% if post.online %}
+			 			<div class="green">Online</div>
+					{% else %}
+			 				Offline
+					{% endif %}
+			 	</div>
+			 	<div class="fecha">12:35</div>
+			 </div>
+
+	</script>	
+	{% endraw %}
+
+</body>
+</html>						

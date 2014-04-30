@@ -1,0 +1,158 @@
+
+color_fondo = #d3d5fe
+color_departamento = #010356 
+color_titulo= #FFF
+color_mensaje = #808080
+img_foto =#B5B5B5
+linea_abajo = #E6E6E6
+linea =#7F7E7E
+ancholistado  =240px
+mensaje_el = #FDFFE9
+mensaje_yo = #FFF
+html
+	height 100%
+body 
+	//background-image url('../img/fn.png');
+	font-size 16px
+	height 100%
+	font-family:'Arial';
+	//font-family:'MyriadPro-Regular';
+.chat
+	//margin-top 27px;
+	background color_fondo
+	bottom 0
+	float right
+	height 100%
+	width ancholistado
+	.departamento
+		cursor pointer
+		.titulo
+			background color_departamento
+			color color_titulo
+			font-size 0.9em
+			height 30px
+			padding-top 0.5em
+			text-align center
+			text-shadow 0.1em 0.1em #000
+	.personas
+		border-bottom 1px solid color_mensaje
+		border-top 1px solid linea_abajo
+		padding 10px
+		height 40px
+		cursor pointer
+		img
+			float left
+			height 40px
+			width 40px
+			border-radius 20px
+			overflow hidden
+			margin-right 10px
+		.nombre 
+			float left
+			width 170px
+			padding 0em
+			padding-top: 0.2em			
+			font-size .9em
+		.nuevo
+			margin-right 180px
+			background red
+			border-radius 10px
+			width 20px
+			color #FFF
+			text-align center
+			position absolute
+		.ultimoMensaje
+			float left
+			color red
+			font-size 0.8em
+			text-shadow 1px 1px #FFF
+			.green
+				color green
+				font-weight bold
+		.fecha
+			float right
+			color color_mensaje
+			font-size 0.6em
+
+.chat_ventana
+	border 1px solid linea
+	background color_fondo
+	bottom  0
+	height 350px
+	margin-right 40px
+	position absolute
+	right ancholistado
+	width 230px
+	.titulo
+		background color_departamento
+		color color_titulo
+		height 20px
+		padding 5px
+		.nombre 
+			text-align center
+			font-size .9em
+			padding 0em
+			padding-top: 0.05em			
+			text-shadow 0.1em 0.1em #000
+	.info
+		.clear 
+			padding-top 30px
+		padding 10px
+		.mensaje_el
+			margin-top 10px
+			img
+				float left
+				height 40px
+				width 40px
+				border-radius 20px
+				overflow hidden
+				margin-right 10px
+			.mensaje 
+				background mensaje_el
+				padding 10px
+				font-size 0.8em
+				border-radius 8px
+				margin-left 43px
+			.fecha 
+				font-size 0.6em
+				float left
+				padding-bottom 3px
+
+		.mensaje_yo
+			margin-top 10px
+			img
+				float right
+				height 40px
+				width 40px
+				border-radius 20px
+				overflow hidden
+				margin-left 10px
+			.mensaje 
+				background mensaje_yo
+				padding 10px
+				font-size 0.8em
+				border-radius 8px
+				margin-right 43px
+			.fecha 
+				font-size 0.6em
+				float right
+				padding-bottom 3px
+
+.control 
+	position fixed
+	bottom  0
+	background color_fondo
+	//padding-bottom 30px
+	input 
+		//border-top 2px solid linea
+		width 226px
+		font-size 0.8em
+		
+
+//footer
+//	background color_departamento
+//	border-top 1px solid linea
+//	width  100%
+//	height 30px
+//	position fixed
+//	bottom  0
