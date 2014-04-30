@@ -25,4 +25,4 @@
             window.webkitNotifications.requestPermission();
         else
             alert("Tu navegador no soporta notificaciones Web de escritorio");
-    }
+    } 
