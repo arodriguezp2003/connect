@@ -128,13 +128,13 @@ io.sockets.on('connection', function(socket){
 		//update creados
 
 		
-	  	Chat.find( { "usuarioDestino" : { $in: [ data.ud + "<>" +data.uo, data.uo + "<>" +data.ud] } } 
+		Chat.find( { "usuarioDestino" : { $in: [ data.ud + "<>" +data.uo, data.uo + "<>" +data.ud] } } 
 			,function(err,docs)
 			{
 				
 			//	socket.emit('old msn',docs);		
-				callback(docs);
-			});
+			callback(docs);
+		});
 	});
 
 	socket.on('adduser', function(data,callback){
@@ -167,95 +167,99 @@ io.sockets.on('connection', function(socket){
 						
 						if(ddd.length>0)
 						{
-						console.log('*******************************************************************');
-						console.log(ddd.length);
-						console.log('************************************ *******************************');
+							console.log('*******************************************************************');
+							console.log(ddd.length);
+							console.log('************************************ *******************************');
 
 							for (var z = usuariosP.length - 1; z >= 0; z--) 
 							{
-									if(ddd[0].usuario ==usuariosP[z].id)
-									{
-										usuariosP[z].num =ddd.length;
+								if(ddd[0].usuario ==usuariosP[z].id)
+								{
+									usuariosP[z].num =ddd.length;
 									//	usuarios[data].emit('usuarios::update', usuariosP[z]);
-									}
+								}
 							}
-						
+							
 						}
 						//
 					});
-			
-								
+				
+				
 			}
 		}
 
 	});
 
-	socket.on('disconnect', function () {
-		var a = socket.nickname
-		if (!socket.nickname) return;
-		if (NickName.indexOf(socket.nickname) > -1) {
-			NickName.splice(NickName.indexOf(socket.nickname), 1);
-		}
+socket.on('disconnect', function () {
+	var a = socket.nickname
+	if (!socket.nickname) return;
+	if (NickName.indexOf(socket.nickname) > -1) {
+		NickName.splice(NickName.indexOf(socket.nickname), 1);
+	}
 
-		console.log('NickName are ' + NickName);  
-		console.log('NickName are ' + NickName);  
-		console.log('NickName are ' + NickName);  
-		console.log('NickName are ' + NickName);  
-		console.log('NickName are ' + NickName);  
-		console.log('NickName are ' + NickName);  
-		
-		for (var i = usuarios.length - 1; i >= 0; i--) {
-			if(usuarios[i].id == a)
-			{
-				usuarios[i].online =false;
-				io.sockets.emit('usuarios::update', usuarios[i]);
-			}
+	console.log('NickName are ' + NickName);  
+	console.log('NickName are ' + NickName);  
+	console.log('NickName are ' + NickName);  
+	console.log('NickName are ' + NickName);  
+	console.log('NickName are ' + NickName);  
+	console.log('NickName are ' + NickName);  
+	console.log('NickName are ' + NickName); 
+	console.log('NickName are ' + NickName); 
+	console.log('NickName are ' + NickName); 
+	console.log('NickName are ' + NickName); 
+
+	for (var i = usuarios.length - 1; i >= 0; i--) {
+		if(usuarios[i].id == a)
+		{
+			usuarios[i].online =false;
+			io.sockets.emit('usuarios::update', usuarios[i]);
 		}
+	}
+});
+
+
+socket.on('send message', function(data, callback)
+{
+	var newMsn = new Chat({
+		usuario:data.user,
+		mensaje:data.msn,
+		departamento: "0",
+		usuarioDestino:  data.user_d + "<>" + data.user,
+		usuarioDestino2:  data.user + "<>" + data.user_d,
+		recibido : false
 	});
-
-
-	socket.on('send message', function(data, callback)
-	{
-		var newMsn = new Chat({
-			usuario:data.user,
-			mensaje:data.msn,
-			departamento: "0",
-			usuarioDestino:  data.user_d + "<>" + data.user,
-			usuarioDestino2:  data.user + "<>" + data.user_d,
-			recibido : false
-		});
-		newMsn.save(function(err){});
-		console.log(data.user + " " +data.msn);
+	newMsn.save(function(err){});
+	console.log(data.user + " " +data.msn);
 		//usernames[socket.nickname]
 		socket.broadcast.emit('nuevo_mensaje', {user: data.user , dest: data.user_d, tipo: data.tipo, msn: data.msn , fecha: data.fecha});
-		 
+		
 	});
 
-	socket.on('send grupo', function(data, callback)
-	{
-		var newMsn = new Chat({
-			usuario:data.user,
-			mensaje:data.msn,
-			departamento: data.Id
+socket.on('send grupo', function(data, callback)
+{
+	var newMsn = new Chat({
+		usuario:data.user,
+		mensaje:data.msn,
+		departamento: data.Id
 
-		});
-		newMsn.save(function(err){});
-		console.log(data.user + " " +data.msn);
+	});
+	newMsn.save(function(err){});
+	console.log(data.user + " " +data.msn);
 		//usernames[socket.nickname]
 		socket.broadcast.emit('nuevo_mensaje_grupo', {user: data.user ,tipo: "el", msn: data.msn , fecha: data.fecha});
 	});
 
 
-	socket.on('old user depto', function (data){
-		
-		console.log("DATA ID " + data.id );
-		Chat.find( { "departamento" : data.id } 
-			,function(err,docs)
-			{
-				console.log(docs);
-				socket.emit('old msn depto',docs);		
-			});
-	});
+socket.on('old user depto', function (data){
+	
+	console.log("DATA ID " + data.id );
+	Chat.find( { "departamento" : data.id } 
+		,function(err,docs)
+		{
+			console.log(docs);
+			socket.emit('old msn depto',docs);		
+		});
+});
 
 
 });
