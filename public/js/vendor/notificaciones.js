@@ -13,6 +13,7 @@
             /*  notif.ondisplay = function () { document.getElementById("msgs").innerHTML += "<br/>Notificación mostrada en: " + new Date(); };
               notif.onclose = function () { document.getElementById("msgs").innerHTML += "<br/>Notificación cerrada en: " + new Date(); };
               notif.onclick = function () { document.getElementById("msgs").innerHTML += "<br/>Se pulsó la notificación en: " + new Date(); };
+              se encuentra algo
               */
               notif.show();
           }
