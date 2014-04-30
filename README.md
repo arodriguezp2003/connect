@@ -1,7 +1,7 @@
-puls3
+Connect
 =====
 
-web app de la clase profesional de front-end de mejorando.la
+web app 
 
 Install
 
