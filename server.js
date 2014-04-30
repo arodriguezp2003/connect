@@ -125,8 +125,10 @@ io.sockets.on('connection', function(socket){
 
 	socket.on('old user', function(data, callback)
 	{
-		console.log(data);
-	    	Chat.find( { "usuarioDestino" : { $in: [ data.ud + "<>" +data.uo, data.uo + "<>" +data.ud] } } 
+		//update creados
+
+		
+	  	Chat.find( { "usuarioDestino" : { $in: [ data.ud + "<>" +data.uo, data.uo + "<>" +data.ud] } } 
 			,function(err,docs)
 			{
 				
