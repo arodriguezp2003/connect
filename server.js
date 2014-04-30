@@ -196,7 +196,14 @@ io.sockets.on('connection', function(socket){
 		if (NickName.indexOf(socket.nickname) > -1) {
 			NickName.splice(NickName.indexOf(socket.nickname), 1);
 		}
+
 		console.log('NickName are ' + NickName);  
+		console.log('NickName are ' + NickName);  
+		console.log('NickName are ' + NickName);  
+		console.log('NickName are ' + NickName);  
+		console.log('NickName are ' + NickName);  
+		console.log('NickName are ' + NickName);  
+		
 		for (var i = usuarios.length - 1; i >= 0; i--) {
 			if(usuarios[i].id == a)
 			{
