@@ -179,12 +179,12 @@ io.sockets.on('connection', function(socket){
 									//	usuarios[data].emit('usuarios::update', usuariosP[z]);
 								}
 							}
-							
+
 						}
 						//
 					});
-				
-				
+
+
 			}
 		}
 
@@ -198,15 +198,7 @@ socket.on('disconnect', function () {
 	}
 
 	console.log('NickName are ' + NickName);  
-	console.log('NickName are ' + NickName);  
-	console.log('NickName are ' + NickName);  
-	console.log('NickName are ' + NickName);  
-	console.log('NickName are ' + NickName);  
-	console.log('NickName are ' + NickName);  
-	console.log('NickName are ' + NickName); 
-	console.log('NickName are ' + NickName); 
-	console.log('NickName are ' + NickName); 
-	console.log('NickName are ' + NickName); 
+
 
 	for (var i = usuarios.length - 1; i >= 0; i--) {
 		if(usuarios[i].id == a)
@@ -232,7 +224,7 @@ socket.on('send message', function(data, callback)
 	console.log(data.user + " " +data.msn);
 		//usernames[socket.nickname]
 		socket.broadcast.emit('nuevo_mensaje', {user: data.user , dest: data.user_d, tipo: data.tipo, msn: data.msn , fecha: data.fecha});
-		
+
 	});
 
 socket.on('send grupo', function(data, callback)
@@ -251,7 +243,7 @@ socket.on('send grupo', function(data, callback)
 
 
 socket.on('old user depto', function (data){
-	
+
 	console.log("DATA ID " + data.id );
 	Chat.find( { "departamento" : data.id } 
 		,function(err,docs)
